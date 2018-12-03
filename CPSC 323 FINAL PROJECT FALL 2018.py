@@ -65,13 +65,14 @@ def Space_Out(string):
 file1 = open('finalp1.txt', 'r')
 output_to_file2 = open('finalp2.txt', 'w')
 
-read_line = file1.readline()                #1
-read_line = read_line.strip()
-read_line = read_line.replace('\t', '')
-
-read_line = RemoveWhiteSpaces(read_line)
-read_line = Space_Out(read_line)
-read_line = RemoveWhiteSpaces(read_line)
+read_line = ''
+# read_line = file1.readline()                #1
+# read_line = read_line.strip()
+# read_line = read_line.replace('\t', '')
+#
+# read_line = RemoveWhiteSpaces(read_line)
+# read_line = Space_Out(read_line)
+# read_line = RemoveWhiteSpaces(read_line)
 # # for i in range(len(read_line)):
 # #     if read_line[i] == ';' and read_line[i-1] == ' ':
 # #         read_line = read_line[0:i-1] + ';'
@@ -101,6 +102,7 @@ read_line = RemoveWhiteSpaces(read_line)
 # once the first line has been found, we will expect different lines other than
 while read_line != 'end':
     # while (read_line[0:2] != '/*' and read_line[len(read_line)-2:] != '*/') or read_line[0:2] != '//':
+
     read_line = file1.readline()
     read_line = read_line.strip()
     read_line = read_line.replace('\t', '')
@@ -138,10 +140,12 @@ while read_line != 'end':
                 comments_start_index = i - 2
         if is_there_a_semicolon:
             # output_to_file2.write('\t'+read_line[0:index_where_semicolon_is+1]+'\n')
-            output_to_file2.write(read_line[0:index_where_semicolon_is + 1] + '\n')
+            read_line = read_line[0:index_where_semicolon_is + 1]
+            output_to_file2.write(read_line + '\n')
         else:
             if are_there_comments:
-                output_to_file2.write(read_line[0:comments_start_index] + '\n')
+                read_line = read_line[0:comments_start_index]
+                output_to_file2.write(read_line + '\n')
             else:
                 output_to_file2.write(read_line + '\n')
 
