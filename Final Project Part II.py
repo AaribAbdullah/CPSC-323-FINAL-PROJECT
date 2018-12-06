@@ -28,7 +28,7 @@ while True:
     accepted = True
     match = False
     strung =''
-    the_terminal = '' #
+    the_terminal = '' # This is the temporary variable for terminals with < and > formateed as <name>
     thestack = []
     thestack.append('end')
     print('\npush: end')
